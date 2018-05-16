@@ -23,7 +23,7 @@ class Model():
 
         self.layer5=tf.layers.conv2d(self.layer4,filters=512,kernel_size=[2,2],strides=[2,2],activation=tf.nn.relu)
 
-        self.layer6=tf.layers.flatten(self.layer5)
+        self.layer6=tf.contrib.layers.flatten(self.layer5)
 
         self.layer7=tf.layers.dense(self.layer6,units=self.num_characters,activation=tf.nn.sigmoid,name="layer7")
 
