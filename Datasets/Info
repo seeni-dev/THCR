@@ -1,0 +1,10 @@
+Either of the Datasets contain user directories which has a 10 leters written
+by the same
+tamil_dataset_offline
+	Total 82934
+	No of users: 169
+	Corrupt: 5382
+	Usable: 77552
+	Distribution: see "tamil_dataset_offline-Dist.png"
+
+For ease of implementation use only "tamil_dataset_offline" to convert the wole into dataset and then Split the data into Train and Test Datasets. 

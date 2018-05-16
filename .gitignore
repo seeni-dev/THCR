@@ -1,0 +1,9 @@
+Dataset/*
+Dataset/*/*
+tamil_dataset_offline/*/*
+tamil_dataset_offline/*
+__pycache__/*
+__pycache__/*/*
+__pycache__/*/*/*
+Pickles/*
+Datasets/*.tar.gz
