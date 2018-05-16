@@ -62,3 +62,7 @@ def load_train_data():
     save=pickle.load(pickle_file)
     print("Train character:",char)
     return save["images"],save["labels"]
+
+
+if(__name__=="__main__"):
+    makePickles()

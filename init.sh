@@ -15,9 +15,15 @@ else
 	python RearrangeData.py
 	echo "Rearrange Done"
 fi
+
 if [ -d tamil_dataset_offline ];then
 
 	echo "Removing tamil_dataset_offline"
 	rm -r tamil_dataset_offline
 	echo "Removal Complete"
 fi
+
+#make pickles for al the image files
+echo "Make Pickles start"
+python DataHandler.py
+echo "Make Pickles Done"
