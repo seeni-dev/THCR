@@ -17,14 +17,14 @@ def trainer():
     '''This module trains the Network adn Dumps it into the Disk'''
     Mod=Model.Model()
     Mod.construct()
-    train(Mod,10)
+    train(Mod,100)
     Mod.save()
     Mod="Dumped"
     Mod=Model.Model()
     Mod.construct()
     Mod.restore()
     DataHandler.char_count=0
-    train(Mod,10)
+    train(Mod,100)
     Mod.save()
 
 trainer()
