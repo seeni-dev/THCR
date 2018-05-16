@@ -13,23 +13,21 @@ class Model():
 
         self.layer0=tf.reshape(self.image,[-1,self.image_size,self.image_size,1],name="layer0")
 
-        self.layer1=tf.layers.conv2d(self.layer0,filters=32,kernel_size=[4,4],strides=[2,2],activation=tf.nn.relu)
+        self.layer1=tf.layers.conv2d(self.layer0,filters=128,kernel_size=[4,4],strides=[2,2])
 
-        self.layer2=tf.layers.conv2d(self.layer1,filters=64,kernel_size=[2,2],strides=[2,2],activation=tf.nn.relu)
+        self.layer2=tf.layers.conv2d(self.layer1,filters=64,kernel_size=[2,2],strides=[2,2])
 
-        self.layer3=tf.layers.conv2d(self.layer2,filters=128,kernel_size=[2,2],strides=[2,2],activation=tf.nn.relu)
+        self.layer3=tf.layers.conv2d(self.layer2,filters=32,kernel_size=[2,2],strides=[2,2])
 
-        self.layer4=tf.layers.conv2d(self.layer3,filters=256,kernel_size=[2,2],strides=[2,2],activation=tf.nn.relu)
+        self.layer4=tf.layers.conv2d(self.layer3,filters=16,kernel_size=[2,2],strides=[2,2])
 
-        self.layer5=tf.layers.conv2d(self.layer4,filters=512,kernel_size=[2,2],strides=[2,2],activation=tf.nn.relu)
+        self.layer5=tf.layers.conv2d(self.layer4,filters=8,kernel_size=[2,2],strides=[2,2])
 
         self.layer6=tf.contrib.layers.flatten(self.layer5)
 
-        self.layer7=tf.layers.dense(self.layer6,units=self.num_characters,activation=tf.nn.sigmoid,name="layer7")
-
+        self.layer7=tf.layers.dense(self.layer6,units=self.num_characters,name="layer7")
 
         self.logits=tf.nn.softmax(self.layer7,name="logits")
-
 
         self.loss=tf.reduce_mean(tf.losses.softmax_cross_entropy(onehot_labels=self.label,logits=self.logits))
 
@@ -41,7 +39,7 @@ class Model():
             )
         )*100;
 
-        self.optimizer=tf.train.GradientDescentOptimizer(0.5).minimize(self.loss)
+        self.optimizer=tf.train.AdamOptimizer(0.2).minimize(self.loss)
 
         self.sess=tf.InteractiveSession()
         tf.global_variables_initializer().run()
@@ -50,9 +48,7 @@ class Model():
         '''Trainer for the network'''
         _,lo,acc=self.sess.run([self.optimizer,self.loss,self.accuracy],feed_dict={self.image:images,self.label:labels})
         print(lo,acc)
-        if(acc==100):
-            return 1
-        return 0
+        return acc
 
     def predict(self,image):
         '''predictor'''

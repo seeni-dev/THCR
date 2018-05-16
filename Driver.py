@@ -6,12 +6,11 @@ def train(Mod,epoch):
     for e in range(epoch):
         images,labels=DataHandler.load_train_data()
         print("Size",len(images))
-        for _ in range(30):
+        con_stat=0
+        while(con_stat<90):
             con_stat=Mod.train(images,labels)
-            if(con_stat==1):
-                break
 
-epoch=100
+epoch=20
 
 def trainer():
     '''This module trains the Network adn Dumps it into the Disk'''

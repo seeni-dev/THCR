@@ -1,0 +1,1 @@
+#1 RELU activation works so bad
