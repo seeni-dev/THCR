@@ -7,3 +7,4 @@ __pycache__/*/*
 __pycache__/*/*/*
 Pickles/*
 Datasets/*.tar.gz
+Datasets/*.tar.gz.*
