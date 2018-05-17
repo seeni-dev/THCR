@@ -9,8 +9,8 @@ def train(Mod,epoch):
         con_stat=0
         while(con_stat<90):
             con_stat=Mod.train(images,labels)
-
-epoch=20
+            
+epoch=150
 
 def trainer():
     '''This module trains the Network adn Dumps it into the Disk'''
