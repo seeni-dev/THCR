@@ -51,17 +51,46 @@ def makePickles():
         with open(dir_destination_pickle,'wb') as file_p:
             pickle.dump(save,file_p)
 
-char_count=0
-def load_train_data():
-    global char_count
-    char_count%=156
-    char=tools.make_char_labe_from_int(char_count)
-    char_count+=1
-    pickle_file="Pickles/"+char+".pkl"
-    pickle_file=open(pickle_file,"rb")
-    save=pickle.load(pickle_file)
-    print("Train character:",char)
-    return save["images"],save["labels"]
+
+
+def data_from_path(path,threshold_size=-1):
+    ''' given path to the pickle file load it into memory '''
+
+    with open(path,'rb') as pickle_file:
+
+        save=pickle.load(pickle_file)
+        if(threshold_size>=len(save["images"]) or threshold_size==-1):
+            return save["images"],save["labels"]
+        else:
+            return save["images"][:threshold_size],save["labels"][:threshold_size]
+
+
+def mix_character(characters,threshold_size=-1):
+    ''' mix the character symbols with each character having threshold_size'''
+
+    characters=[tools.make_char_labe_from_int(c) for c in characters]
+
+    images=[]
+    labels=[]
+
+    for char in characters:
+        pickle_path="Pickles/"+char+".pkl"
+        images_,labels_=data_from_path(pickle_path,threshold_size=-1)
+
+        images.extend(images_)
+        labels.extend(labels_)
+
+    return images,labels
+
+
+def load_char_data(char):
+    '''returns the image data for the char'''
+
+    char_=tools.make_char_labe_from_int(char)
+    pickle_path="Pickles/"+char_+".pkl"
+
+    return data_from_path(pickle_path)
+
 
 
 if(__name__=="__main__"):
