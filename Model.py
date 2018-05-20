@@ -26,7 +26,7 @@ class Model():
 
         self.logits=tf.nn.softmax(self.dense,name="logits")
 
-        self.loss=tf.reduce_mean(tf.losses.softmax_cross_entropy(onehot_labels=self.label,logits=self.logits))
+        self.loss=tf.reduce_mean(tf.losses.softmax_cross_entropy (self.label,self.logits))
 
         self.accuracy=tf.reduce_mean(
             tf.cast(
@@ -41,11 +41,13 @@ class Model():
         self.sess=tf.InteractiveSession()
         tf.global_variables_initializer().run()
 
+        return
+
     def train(self,images,labels):
         '''Trainer for the network'''
         _,lo,acc=self.sess.run([self.optimizer,self.loss,self.accuracy],feed_dict={self.image:images,self.label:labels})
         print(lo,acc)
-        return acc
+        return lo,acc
 
     def predict(self,image):
         '''predictor'''
