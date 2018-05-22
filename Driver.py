@@ -12,8 +12,13 @@ def train_char(Mod,char,epoch):
         print("Epoch {}".format(e+1))
         accuracy=0
         loss=10
-        while(accuracy<95 or loss > 2):
+        prev_loss=-1
+        loss_stag_count=0
+        while(accuracy<95 or (loss > 2 and loss_stag_count < 50) ):
             loss,accuracy=Mod.train(images,labels)
+            if(loss==prev_loss):
+                loss_stag_count+=1
+            prev_loss=loss
 
     return
 
