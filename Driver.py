@@ -1,6 +1,11 @@
 import DataHandler
 import Model
 
+def trainPattern():
+    trainPatternFile="trainPattern.txt"
+    with open(trainPatternFile) as file:
+        return list(map(int,file.read().split(" ")))
+
 
 def train_char(Mod,char,epoch):
     '''Trains the model a character for epoch number of times '''
@@ -46,4 +51,5 @@ def trainer(restore):
 
 restore=False
 
-trainer(restore)
+if(__name__=="__main__"):
+    trainer(restore)
