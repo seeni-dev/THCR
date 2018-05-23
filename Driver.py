@@ -33,15 +33,17 @@ def train(Mod,char_set,epoch):
     return
 
 
-def trainer():
+def trainer(restore):
     '''This module trains the Network adn Dumps it into the Disk'''
     Mod=Model.Model()
     Mod.construct()
-    Mod.restore()
+    if(restore):
+        Mod.restore()
 
     train(Mod,char_set=[1,2,1,2,1,2],epoch=5)
 
     Mod.save()
 
+restore=False
 
-trainer()
+trainer(restore)

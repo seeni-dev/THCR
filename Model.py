@@ -15,14 +15,17 @@ class Model():
 
         self.conv1=tf.layers.conv2d(self.layer0,32,kernel_size=[5,5],activation=tf.nn.relu)
 
+        self.pool1=tf.layers.max_pooling2d(self.conv1,pool_size=[2,2],strides=2)
 
-        self.flat=tf.contrib.layers.flatten(self.layer0)
+        self.conv2=tf.layers.conv2d(self.pool1,16,kernel_size=[5,5],activation=tf.nn.relu)
 
-        self.dense0=tf.layers.dense(self.flat,units=1000,activation=tf.nn.sigmoid)
+        self.pool2=tf.layers.max_pooling2d(self.conv2,pool_size=[5,5],strides=2)
 
-        self.dense1=tf.layers.dense(self.dense0,units=500,activation=tf.nn.sigmoid)
 
-        self.dense=tf.layers.dense(self.dense1,units=self.num_characters,activation=tf.nn.sigmoid)
+        self.flat=tf.contrib.layers.flatten(self.pool2)
+
+
+        self.dense=tf.layers.dense(self.flat,units=self.num_characters,activation=tf.nn.relu)
 
         self.logits=tf.nn.softmax(self.dense,name="logits")
 
