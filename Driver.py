@@ -45,7 +45,8 @@ def trainer(restore):
     if(restore):
         Mod.restore()
 
-    train(Mod,char_set=[1,2,1,2,1,2],epoch=5)
+    char_set=trainPattern()
+    train(Mod,char_set=char_set,epoch=5)
 
     Mod.save()
 
