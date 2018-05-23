@@ -1,2 +1,4 @@
 #1 RELU activation works so bad
 #2 Forcing Loss to decreas below certain amount doesnt produce any significant result
+#3 CNN  consumes more time than the SNN
+#4 Using CNN Loss optimization is so fast 

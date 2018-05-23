@@ -19,8 +19,11 @@ class Model():
 
         self.conv2=tf.layers.conv2d(self.pool1,16,kernel_size=[5,5],activation=tf.nn.relu)
 
-        self.pool2=tf.layers.max_pooling2d(self.conv2,pool_size=[5,5],strides=2)
+        self.pool2=tf.layers.max_pooling2d(self.conv2,pool_size=[2,2],strides=2)
 
+        self.conv3=tf.layers.conv2d(self.pool2,8,kernel_size=[5,5])
+
+        self.pool3=tf.layers.max_pooling2d(self.conv3,pool_size=[2,2],strides=2)
 
         self.flat=tf.contrib.layers.flatten(self.pool2)
 

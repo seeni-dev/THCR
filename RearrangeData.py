@@ -14,6 +14,8 @@ os.makedirs(root_destination,exist_ok=True)
 
 counter={}
 
+
+
 def invalidLabel(label):
     '''label is a string'''
     try:
@@ -21,6 +23,9 @@ def invalidLabel(label):
         return False
     except:
         return True
+
+
+
 
 def copyIfApplicable(file_source,image_name):
     '''This method copies the files only if it is image file. It also organizes the images into different directories'''
@@ -48,7 +53,10 @@ for user_dir in os.listdir(root_source):
         copyIfApplicable(file_source,image_name)
 
 
+
+
 character=counter.keys()
 counts_character=[counter[key] for key in character]
+
 plt.scatter(character,counts_character)
 plt.show()
