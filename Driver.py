@@ -1,39 +1,46 @@
 import DataHandler
 import Model
+import tools
 
-def trainPattern():
-    trainPatternFile="trainPattern.txt"
-    with open(trainPatternFile) as file:
-        return list(map(int,file.read().split(" ")))
+label_set=[0,1,2,3,4,5,6,7,8,9,10,11,12]
+
+def load_data(filter=False):
+    '''Loads and Filters the Data'''
+    images,labels=DataHandler.load_user_data()
+    if(filter):
+        images,labels=tools.FilterData(images,labels,label_set)
+    return images,labels
 
 
-def train_char(Mod,char,epoch):
-    '''Trains the model a character for epoch number of times '''
-
-    print("Character ",char )
-    images,labels=DataHandler.load_char_data(char)
-
+def train_user(Mod,epoch):
+    images,labels=load_data()
     for e in range(epoch):
-        print("Epoch {}".format(e+1))
-        accuracy=0
-        loss=10
+        print("Epoch {}".format(e))
+        loss=0
         prev_loss=-1
-        loss_stag_count=0
-        while(accuracy<95 or (loss > 2 and loss_stag_count < 50) ):
-            loss,accuracy=Mod.train(images,labels)
-            if(loss==prev_loss):
-                loss_stag_count+=1
-            prev_loss=loss
+        acc=0
+        loss_stagnant=0
+
+        while(acc<95 and  loss_stagnant<30):
+
+            loss,acc=Mod.train(images,labels)
+            if(prev_loss==loss):
+                loss_stagnant+=1
+                print("="*30)
+            else:
+                loss_stagnant=0
+                prev_loss=loss
+
+        if(loss_stagnant==30):
+            print("Loss Stagnated at ",prev_loss)
 
     return
 
+def train(Mod,epoch,usernos):
+    '''Trains the model for a usernos no of times '''
 
-def train(Mod,char_set,epoch):
-
-    '''Trains the Model'''
-
-    for char in char_set:
-        train_char(Mod,char,epoch)
+    for _ in range(usernos):
+        train_user(Mod,epoch)
 
     return
 
@@ -45,8 +52,7 @@ def trainer(restore):
     if(restore):
         Mod.restore()
 
-    char_set=trainPattern()
-    train(Mod,char_set=char_set,epoch=5)
+    train(Mod,epoch=1,usernos=150)
 
     Mod.save()
 

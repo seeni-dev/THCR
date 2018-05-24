@@ -14,3 +14,24 @@ def argmax(one_hot_label):
             label_i=i
             return label_i
     raise Exception("Invalid One Hot label. Check the Dimesions")
+
+
+def invalidLabel(label):
+    '''label is a string'''
+    try:
+        label_i=int(label) #Exception will be raised if it is not a character label
+        return False
+    except:
+        return True
+
+
+
+def FilterData(images,labels,label_set):
+    images_f=[]
+    labels_f=[]
+    for label_i in range(len(labels)):
+        label=labels[label_i]
+        if(argmax(label) in label_set):
+            images_f.append(images[label_i])
+            labels_f.append(label)
+    return images_f,labels_f

@@ -6,6 +6,7 @@ import os
 import sys
 from shutil import copyfile
 import matplotlib.pyplot as plt
+from tools import invalidLabel
 
 root_source='tamil_dataset_offline'
 root_destination='Dataset'
@@ -13,17 +14,6 @@ root_destination='Dataset'
 os.makedirs(root_destination,exist_ok=True)
 
 counter={}
-
-
-
-def invalidLabel(label):
-    '''label is a string'''
-    try:
-        label_i=int(label) #Exception will be raised if it is not a character label
-        return False
-    except:
-        return True
-
 
 
 
@@ -55,8 +45,6 @@ def Rearrage():
         for image_name in os.listdir(root_source+"/"+user_dir):
             file_source=root_source+"/"+user_dir+"/"+image_name
             copyIfApplicable(file_source,image_name)
-
-
 
 
     character=counter.keys()
