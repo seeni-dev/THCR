@@ -6,5 +6,6 @@ __pycache__/*
 __pycache__/*/*
 __pycache__/*/*/*
 Pickles/*
+Pickles_User/*
 Datasets/*.tar.gz
 Datasets/*.tar.gz.*

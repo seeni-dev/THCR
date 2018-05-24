@@ -47,16 +47,24 @@ def copyIfApplicable(file_source,image_name):
     copyfile(file_source,file_destination)
     return
 
-for user_dir in os.listdir(root_source):
-    for image_name in os.listdir(root_source+"/"+user_dir):
-        file_source=root_source+"/"+user_dir+"/"+image_name
-        copyIfApplicable(file_source,image_name)
+
+
+def Rearrage():
+
+    for user_dir in os.listdir(root_source):
+        for image_name in os.listdir(root_source+"/"+user_dir):
+            file_source=root_source+"/"+user_dir+"/"+image_name
+            copyIfApplicable(file_source,image_name)
 
 
 
 
-character=counter.keys()
-counts_character=[counter[key] for key in character]
+    character=counter.keys()
+    counts_character=[counter[key] for key in character]
 
-plt.scatter(character,counts_character)
-plt.show()
+    plt.scatter(character,counts_character)
+    plt.show()
+
+
+if(__name__=="__main__"):
+    Rearrage()

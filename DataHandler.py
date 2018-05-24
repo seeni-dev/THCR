@@ -6,6 +6,7 @@ from skimage.color import rgb2gray
 from skimage.transform import resize
 import numpy as np
 import tools
+from RearrangeData import invalidLabel
 
 image_size=100
 num_characters=156
@@ -93,5 +94,49 @@ def load_char_data(char):
 
 
 
+def makePickle_Users():
+
+    ''' Make Pickles based on the user wise data not character_wise data '''
+
+    root_source="tamil_dataset_offline"
+    root_destination="Pickles_User"
+
+    os.makedirs(root_destination,exist_ok=True)
+
+    for user in os.listdir(root_source):
+        directory_source=os.path.join(root_source,user)
+        pickle_destination=os.path.join(root_destination,user)+".pkl"
+        images=[]
+        labels=[]
+
+        for file in os.listdir(directory_source):
+
+            file_source=os.path.join(directory_source,file)
+            try:
+                image=getImageData(file_source)
+                label=file[:3]
+                if(invalidLabel(label)):
+                    print("Invalid File",file_source)
+                    return
+                label=onehot(label)
+                images.append(image)
+                labels.append(label)
+
+            except:
+                print("Invalid File",file_source)
+
+        #when all the files added pickle it
+        save={
+            "images":images,
+            "labels":labels
+        }
+
+        with open(pickle_destination,"wb") as pickle_file:
+            pickle.dump(file=pickle_file,obj=save)
+
+    return
+
+
+
 if(__name__=="__main__"):
-    makePickles()
+    makePickle_Users()
