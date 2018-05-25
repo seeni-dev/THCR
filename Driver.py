@@ -35,7 +35,7 @@ def train_user(Mod,epoch):
         acc=0
         loss_stagnant=0
 
-        while(acc<95 and  loss_stagnant<30):
+        while(acc<95 and  loss_stagnant<10):
 
             loss,acc=Mod.train(images,labels)
             if(prev_loss==loss):
@@ -45,7 +45,7 @@ def train_user(Mod,epoch):
                 loss_stagnant=0
                 prev_loss=loss
 
-        if(loss_stagnant==30):
+        if(loss_stagnant==10):
             print("Loss Stagnated at ",prev_loss)
 
     return
