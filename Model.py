@@ -1,4 +1,6 @@
 import tensorflow as tf
+import random
+
 class Model():
     def __init__(self):
         print("Model Initializing")
@@ -13,11 +15,11 @@ class Model():
 
         self.layer0=tf.reshape(self.image,[-1,self.image_size,self.image_size,1],name="layer0")
 
-        self.conv1=tf.layers.conv2d(self.layer0,32,kernel_size=[5,5],activation=tf.nn.relu)
+        self.conv1=tf.layers.conv2d(self.layer0,32,kernel_size=[5,5])
 
         self.pool1=tf.layers.max_pooling2d(self.conv1,pool_size=[2,2],strides=2)
 
-        self.conv2=tf.layers.conv2d(self.pool1,16,kernel_size=[5,5],activation=tf.nn.relu)
+        self.conv2=tf.layers.conv2d(self.pool1,16,kernel_size=[5,5])
 
         self.pool2=tf.layers.max_pooling2d(self.conv2,pool_size=[2,2],strides=2)
 
@@ -28,7 +30,7 @@ class Model():
         self.flat=tf.contrib.layers.flatten(self.pool2)
 
 
-        self.dense=tf.layers.dense(self.flat,units=self.num_characters,activation=tf.nn.relu)
+        self.dense=tf.layers.dense(self.flat,units=self.num_characters)
 
         self.logits=tf.nn.softmax(self.dense,name="logits")
 
@@ -42,7 +44,7 @@ class Model():
             )
         )*100;
 
-        self.optimizer=tf.train.GradientDescentOptimizer(1).minimize(self.loss)
+        self.optimizer=tf.train.GradientDescentOptimizer(0.75).minimize (self.loss)
 
         self.sess=tf.InteractiveSession()
         tf.global_variables_initializer().run()

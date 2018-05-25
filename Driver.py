@@ -2,7 +2,7 @@ import DataHandler
 import Model
 import tools
 
-label_set=[0,1,2,3,4,5,6,7,8,9,10,11,12]
+label_set=[0,1,2]
 
 def load_data(filter=False):
     '''Loads and Filters the Data'''
@@ -12,8 +12,22 @@ def load_data(filter=False):
     return images,labels
 
 
+def load_data_Users(usernos,filter=False):
+    images=[]
+    labels=[]
+
+    for _ in range(usernos):
+        images_,labels_=load_data(filter)
+        images.extend(images_)
+        labels.extend(labels_)
+
+    print("Size of current epoch dataset",len(labels))
+    return images,labels
+
+
+
 def train_user(Mod,epoch):
-    images,labels=load_data()
+    images,labels=load_data_Users(filter=False,usernos=15)
     for e in range(epoch):
         print("Epoch {}".format(e))
         loss=0
