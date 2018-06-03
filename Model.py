@@ -15,22 +15,15 @@ class Model():
 
         self.layer0=tf.reshape(self.image,[-1,self.image_size,self.image_size,1],name="layer0")
 
-        self.conv1=tf.layers.conv2d(self.layer0,32,kernel_size=[5,5])
+        self.conv1=tf.layers.conv2d(self.layer0,32,kernel_size=[5,5],strides=2,activation=tf.nn.relu)
 
-        self.pool1=tf.layers.max_pooling2d(self.conv1,pool_size=[2,2],strides=2)
+        self.pool1=tf.layers.max_pooling2d(self.conv1,pool_size=[5,5],strides=2)
 
-        self.conv2=tf.layers.conv2d(self.pool1,16,kernel_size=[5,5])
+        self.flat=tf.contrib.layers.flatten(self.pool1)
 
-        self.pool2=tf.layers.max_pooling2d(self.conv2,pool_size=[2,2],strides=2)
+        self.dropout=tf.nn.dropout(self.flat,0.5)
 
-        self.conv3=tf.layers.conv2d(self.pool2,8,kernel_size=[5,5])
-
-        self.pool3=tf.layers.max_pooling2d(self.conv3,pool_size=[2,2],strides=2)
-
-        self.flat=tf.contrib.layers.flatten(self.pool2)
-
-
-        self.dense=tf.layers.dense(self.flat,units=self.num_characters)
+        self.dense=tf.layers.dense(self.dropout,units=self.num_characters,activation=tf.nn.relu)
 
         self.logits=tf.nn.softmax(self.dense,name="logits")
 
@@ -44,7 +37,7 @@ class Model():
             )
         )*100;
 
-        self.optimizer=tf.train.GradientDescentOptimizer(0.75).minimize (self.loss)
+        self.optimizer=tf.train.GradientDescentOptimizer(0.9).minimize (self.loss)
 
         self.sess=tf.InteractiveSession()
         tf.global_variables_initializer().run()

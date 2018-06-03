@@ -27,7 +27,7 @@ def load_data_Users(usernos,filter=False):
 
 
 def train_user(Mod,epoch):
-    images,labels=load_data_Users(filter=False,usernos=1)
+    images,labels=load_data_Users(filter=True,usernos=25)
     for e in range(epoch):
         print("Epoch {}".format(e))
         loss=0
