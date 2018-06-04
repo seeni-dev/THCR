@@ -8,9 +8,13 @@ else
 	#Download the files
 	url=https://raw.githubusercontent.com/Seenivasanseeni/TamilCharacterRecognition/master/Datasets/hpl-tamil-iso-char-offline-1.0.tar.gz
 	wget -P Datasets/ $url
+fi
+
+if [ -d tamil_dataset_offline ]; then
 
 	echo "Extracting Files"
 	tar -xf Datasets/hpl-tamil-iso-char-offline-1.0.tar.gz -C .
+	echo "Extraction Done"
 
 fi
 

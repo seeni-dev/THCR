@@ -8,7 +8,7 @@ import numpy as np
 import tools
 from tools import invalidLabel
 
-image_size=100
+image_size=50
 num_characters=156
 
 def getImageData(file_path):
