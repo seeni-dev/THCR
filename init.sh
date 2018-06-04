@@ -2,7 +2,7 @@
 #This scripts executes initiazlization steps- Extracts the archieves and Rearranges them
 
 
-if [ -d Dataset ]; then
+if [ -d tamil_dataset_offline ]; then
 	echo "Direcory Exists"
 else
 	#Download the files
