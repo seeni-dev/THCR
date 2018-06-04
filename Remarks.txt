@@ -1,5 +1,6 @@
 #1 RELU activation works so bad
 #2 Forcing Loss to decreas below certain amount doesnt produce any significant result
 #3 CNN  consumes more time than the SNN
-#4 Using CNN Loss optimization is so fast 
+#4 Using CNN Loss optimization is so fast
 #5 Redcing Loss of one class stagnates the loss of another class without any significant difference in accuracy just 0
+#6 image size of 35 is quite adequate  50 is for more complex ones
