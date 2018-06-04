@@ -1,6 +1,8 @@
+from conf import *
+
 def make_char_labe_from_int(label):
-    if(label>=156):
-        raise Exception("Invalid Label")
+    if(label>=num_characters):
+        raise Exception("Label Out of Range or Invalid File ")
     char_label=str(label)
     while(len(char_label)<3):
         char_label="0"+char_label
@@ -20,6 +22,8 @@ def invalidLabel(label):
     '''label is a string'''
     try:
         label_i=int(label) #Exception will be raised if it is not a character label
+        if(label_i>=num_characters):
+            return True
         return False
     except:
         return True

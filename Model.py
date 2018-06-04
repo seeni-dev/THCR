@@ -1,6 +1,6 @@
 import tensorflow as tf
 import random
-from DataHandler import image_size
+from conf import *
 
 class Model():
     def __init__(self):
@@ -10,7 +10,7 @@ class Model():
         ''' It constructs the model'''
         tf.reset_default_graph()
         self.image_size=image_size
-        self.num_characters=156
+        self.num_characters=num_characters
         self.image=tf.placeholder(tf.float32,shape=[None,self.image_size,self.image_size],name="image")
         self.label=tf.placeholder(tf.float32,shape=[None,self.num_characters],name="label")
 

@@ -1,8 +1,8 @@
 import DataHandler
 import Model
 import tools
-
-label_set=[0,1,2]
+from conf import *
+label_set=[ i for i in range(12) ]
 
 def load_data(filter=False):
     '''Loads and Filters the Data'''
@@ -26,8 +26,8 @@ def load_data_Users(usernos,filter=False):
 
 
 
-def train_user(Mod,epoch):
-    images,labels=load_data_Users(filter=True,usernos=25)
+def train_user(Mod,epoch,usernos):
+    images,labels=load_data_Users(filter=False,usernos)
     for e in range(epoch):
         print("Epoch {}".format(e))
         loss=0
@@ -54,7 +54,7 @@ def train(Mod,epoch,usernos):
     '''Trains the model for a usernos no of times '''
 
     for _ in range(usernos):
-        train_user(Mod,epoch)
+        train_user(Mod,epoch,usernos)
 
     return
 
@@ -66,7 +66,7 @@ def trainer(restore):
     if(restore):
         Mod.restore()
 
-    train(Mod,epoch=1,usernos=150)
+    train(Mod,epoch=1,usernos=15)
 
     Mod.save()
 

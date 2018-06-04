@@ -7,9 +7,8 @@ from skimage.transform import resize
 import numpy as np
 import tools
 from tools import invalidLabel
+from conf import *
 
-image_size=50
-num_characters=156
 
 def getImageData(file_path):
     '''This method will read the image and resize according to the size (image_size,image_size)'''
@@ -59,14 +58,15 @@ def makePickle_Users():
                 image=getImageData(file_source)
                 label=file[:3]
                 if(invalidLabel(label)):
-                    print("Invalid File",file_source)
-                    return
+                    #print("Invalid File",file_source)
+                    continue
+                #print("Done ",file_source)
                 label=onehot(label)
                 images.append(image)
                 labels.append(label)
 
             except:
-                print("Invalid File",file_source)
+                print("Invalid Image File ",file_source)
 
         #when all the files added pickle it
         save={
@@ -80,6 +80,10 @@ def makePickle_Users():
     return
 
 root_source="Pickles_User"
+
+if( not root_source in  os.listdir()):
+    makePickle_Users()
+
 user_pickles=os.listdir(root_source)
 index=-1
 
