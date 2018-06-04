@@ -1,0 +1,25 @@
+
+########################################################################
+#      Date:           Mon Jun  4 01:10:07 PDT 2018
+#    Job ID:           90096.c009
+#      User:           u11460
+# Resources:           neednodes=1:ppn=2,nodes=1:ppn=2,walltime=06:00:00
+########################################################################
+
+Working in  /home/u11460/THCR
+Direcory Exists
+tamil_dataset_offline already exists
+Make Pickles start
+Invalid File tamil_dataset_offline/usr_120/036t01.png
+Invalid File tamil_dataset_offline/usr_107/Thumbs.db
+Invalid File tamil_dataset_offline/usr_174/t03.tiff
+Make Pickles Done
+Removing tamil_dataset_offline
+Removal Complete
+job1 done
+
+########################################################################
+# End of output for job 90096.c009
+# Date: Mon Jun  4 01:14:30 PDT 2018
+########################################################################
+
