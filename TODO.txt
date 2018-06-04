@@ -1,2 +1,2 @@
-Done #1 Refactor the whole code and fix the issues with makePickle_Users 
+Done #1 Refactor the whole code and fix the issues with makePickle_Users
 #2 use DNN at the end of the model
