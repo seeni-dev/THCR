@@ -16,8 +16,6 @@ def getImageData(file_path):
     image=plt.imread(file_path)
     image_corrected=rgb2gray(image)
     image_resized=resize(image_corrected,output_shape=[image_size,image_size])
-    plt.imshow(image_resized)
-    plt.show()
     return image_resized
 
 def onehot(label):

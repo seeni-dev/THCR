@@ -6,13 +6,20 @@ if [ -d tamil_dataset_offline ]; then
 	echo "Direcory Exists"
 else
 	#Download the files
-	url=https://raw.githubusercontent.com/Seenivasanseeni/TamilCharacterRecognition/master/Datasets/hpl-tamil-iso-char-offline-1.0.tar.gz
-	wget -P Datasets/ $url
+	if [ -e Datasets/hpl-tamil-iso-char-offline-1.0.tar.gz ]; then
+		echo "File Alreary exists"
+	else
+		url=https://raw.githubusercontent.com/Seenivasanseeni/TamilCharacterRecognition/master/Datasets/hpl-tamil-iso-char-offline-1.0.tar.gz
+		wget -P Datasets/ $url
+	fi
 fi
 
 if [ -d tamil_dataset_offline ]; then
+	echo "tamil_dataset_offline already exists"
 
+else
 	echo "Extracting Files"
+
 	tar -xf Datasets/hpl-tamil-iso-char-offline-1.0.tar.gz -C .
 	echo "Extraction Done"
 
