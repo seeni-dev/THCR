@@ -27,7 +27,7 @@ def load_data_Users(usernos,filter=False):
 
 
 def train_user(Mod,epoch,usernos):
-    images,labels=load_data_Users(filter=False,usernos)
+    images,labels=load_data_Users(filter=False,usernos=usernos)
     for e in range(epoch):
         print("Epoch {}".format(e))
         loss=0
@@ -35,7 +35,7 @@ def train_user(Mod,epoch,usernos):
         acc=0
         loss_stagnant=0
 
-        while(acc<95 and  loss_stagnant<10):
+        while(acc<threshold_accuracy and  loss_stagnant<10):
 
             loss,acc=Mod.train(images,labels)
             if(prev_loss==loss):
