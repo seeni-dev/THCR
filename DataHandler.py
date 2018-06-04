@@ -55,13 +55,15 @@ def makePickle_Users():
 
             file_source=os.path.join(directory_source,file)
             try:
-                image=getImageData(file_source)
                 label=file[:3]
                 if(invalidLabel(label)):
                     #print("Invalid File",file_source)
                     continue
-                #print("Done ",file_source)
+
+                image=getImageData(file_source)
                 label=onehot(label)
+                #print("Done ",file_source)
+                
                 images.append(image)
                 labels.append(label)
 
