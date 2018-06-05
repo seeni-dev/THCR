@@ -4,4 +4,6 @@
 #4 Using CNN Loss optimization is so fast
 #5 Redcing Loss of one class stagnates the loss of another class without any significant difference in accuracy just 0
 #6 image size of 35 is quite adequate  50 is for more complex ones
-#7 training of 12 class network is so easy to get the job done for 12 
+#7 training of 12 class network is so easy to get the job done for 12 for image size of 50
+#8 Higher image sizes leads to loss stagnation or vanishing grdadient
+#9 train should be done on all classes there should be efficient examples
