@@ -7,3 +7,4 @@
 #7 training of 12 class network is so easy to get the job done for 12 for image size of 50
 #8 Higher image sizes leads to loss stagnation or vanishing grdadient
 #9 train should be done on all classes there should be efficient examples
+#9 Character class ==60 needs lot of training time which is quite long in intel cloud to be killed
