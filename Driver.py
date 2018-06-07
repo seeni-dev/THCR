@@ -44,7 +44,8 @@ def train_user(Mod,epoch,usernos):
             else:
                 loss_stagnant=0
                 prev_loss=loss
-
+            if(acc>=lowThresholdAccuracy):
+                Mod.save()
         if(loss_stagnant==10):
             print("Loss Stagnated at ",prev_loss)
 
@@ -70,7 +71,6 @@ def trainer(restore):
 
     Mod.save()
 
-restore=False
 
 if(__name__=="__main__"):
     trainer(restore)

@@ -6,3 +6,7 @@ rm *.sh.[oe]*
 echo "cleaning pycache files "
 rm  ../__pycache__/ -rf
 rm ../*/__pycache__/ -rf
+
+
+echo "Cleaning RanFlag.file"
+rm RanFlag.file
