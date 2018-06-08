@@ -46,7 +46,9 @@ def train_user(Mod,epoch,usernos):
                 prev_loss=loss
             if(acc>=lowThresholdAccuracy):
                 Mod.save()
-                print("Model Saving as inetemediatory")
+                lowThresholdAccuracy+=5
+                print("Model Saving as intermediatory")
+                
         if(loss_stagnant==10):
             print("Loss Stagnated at ",prev_loss)
 
