@@ -1,0 +1,39 @@
+
+########################################################################
+#      Date:           Fri Jun  8 04:53:32 PDT 2018
+#    Job ID:           91313.c009
+#      User:           u11460
+# Resources:           neednodes=1:ppn=2,nodes=1:ppn=2,walltime=06:00:00
+########################################################################
+
+Working in  /home/u11460/THCR
+This pass is being run with restoring so skipping init.sh
+job1 done
+Running Driver 
+Model Initializing
+Model Restored
+Using Pickle Pickles_User/usr_49.pkl
+Using Pickle Pickles_User/usr_190.pkl
+Using Pickle Pickles_User/usr_120.pkl
+Using Pickle Pickles_User/usr_39.pkl
+Using Pickle Pickles_User/usr_132.pkl
+Using Pickle Pickles_User/usr_166.pkl
+Using Pickle Pickles_User/usr_208.pkl
+Using Pickle Pickles_User/usr_189.pkl
+Using Pickle Pickles_User/usr_167.pkl
+Using Pickle Pickles_User/usr_179.pkl
+Using Pickle Pickles_User/usr_181.pkl
+Using Pickle Pickles_User/usr_184.pkl
+Using Pickle Pickles_User/usr_193.pkl
+Using Pickle Pickles_User/usr_29.pkl
+Using Pickle Pickles_User/usr_129.pkl
+Size of current epoch dataset 2608
+Epoch 0
+3.5089748 61.234665
+Driver Ran
+
+########################################################################
+# End of output for job 91313.c009
+# Date: Fri Jun  8 04:53:55 PDT 2018
+########################################################################
+
