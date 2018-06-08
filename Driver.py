@@ -27,6 +27,7 @@ def load_data_Users(usernos,filter=False):
 
 
 def train_user(Mod,epoch,usernos):
+    global lowThresholdAccuracy
     images,labels=load_data_Users(filter=False,usernos=usernos)
     for e in range(epoch):
         print("Epoch {}".format(e))
