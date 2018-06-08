@@ -38,7 +38,7 @@ class Model():
             )
         )*100;
 
-        self.optimizer=tf.train.GradientDescentOptimizer(0.9).minimize (self.loss)
+        self.optimizer=tf.train.GradientDescentOptimizer(learningRate).minimize (self.loss)
 
         self.sess=tf.InteractiveSession()
         tf.global_variables_initializer().run()
