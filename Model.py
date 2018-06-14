@@ -20,7 +20,12 @@ class Model():
 
         self.pool1=tf.layers.max_pooling2d(self.conv1,pool_size=[5,5],strides=2)
 
-        self.flat=tf.contrib.layers.flatten(self.pool1)
+        self.conv2=tf.layers.conv2d(self.pool1,16,kernel_size=[2,2],strides=2)
+
+        self.pool2=tf.layers.max_pooling2d(self.conv2,pool_size=[2,2],strides=2)
+
+
+        self.flat=tf.contrib.layers.flatten(self.pool2)
 
         self.dropout=tf.nn.dropout(self.flat,0.5)
 
